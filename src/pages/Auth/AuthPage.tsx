@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
 import './authPage.css';
+import { useNavigate } from 'react-router-dom';
 const AuthPage = () => {
+  const navigate = useNavigate();
   const [isSignIn, setIsSignIn] = useState(true);
   const handleToggle = () => {
     setIsSignIn(!isSignIn);
@@ -80,6 +82,11 @@ const AuthPage = () => {
           <input
             className="auth-page__btn"
             type="submit"
+            onClick={() => {
+              navigate('/dashboard');
+
+              // navigate('/dashboard', { replace: true });
+            }}
             value={`${isSignIn ? '로그인' : '회원가입'}`}
           />
         </div>

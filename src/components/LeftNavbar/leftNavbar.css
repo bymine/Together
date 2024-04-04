@@ -1,0 +1,28 @@
+.leftNavbar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 240px;
+  padding: 0 20px;
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+
+.leftNavbar__dash-btn {
+  background: #3b5ccf;
+  color: #fff;
+  border-radius: 8px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.dash-icon {
+  width: 20px;
+  height: 20px;
+  background: #f200ff;
+}

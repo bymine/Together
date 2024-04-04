@@ -1,0 +1,59 @@
+.channelCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e5ec;
+  border-radius: 8px;
+}
+.channel__header {
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.channel__image {
+  width: 24px;
+  height: 24px;
+  background: #f200ff;
+  border-radius: 4px;
+}
+
+.channel__title {
+  padding: 0 0.5rem;
+  flex: 1;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.channel__icon {
+  width: 20px;
+  height: 20px;
+  background: #f200ff;
+  border-radius: 4px;
+}
+
+.channel__menu {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  gap: 0.5rem;
+  background: #f7f7fb;
+
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.channel__menu {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.channel__menu li:hover {
+  color: #3b5ccf;
+  font-weight: bold;
+}
+
+.channel__menu li:first-child {
+  color: #3b5ccf;
+  font-weight: bold;
+}
