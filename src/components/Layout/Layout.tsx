@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import './layout.css';
+import './layout.scss';
 import AuthNavbar from '../AuthNavbar/AuthNavbar';
 import Navbar from '../Navbar/Navbar';
 import LeftNavbar from '../LeftNavbar/LeftNavbar';
@@ -10,7 +10,9 @@ const Layout = () => {
       {location.pathname.startsWith('/auth') ? (
         <>
           <AuthNavbar />
-          <Outlet />
+          <div className="auth-content">
+            <Outlet />
+          </div>
         </>
       ) : (
         <>
