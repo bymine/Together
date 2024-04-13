@@ -1,11 +1,23 @@
 import { useState } from 'react';
 import './authPage.scss';
+import AuthenticationForm from '../../components/AuthenticationForm/AuthenticationForm';
 import { useNavigate } from 'react-router-dom';
+import FindAccountForm from '../../components/FindAccountForm/FindAccountForm';
 const AuthPage = () => {
   const navigate = useNavigate();
+
   const [isAuthMode, setIsAuthMode] = useState(true);
   const [isSignIn, setIsSignIn] = useState(true);
   const [isFindId, setIsFindId] = useState(true);
+
+  const handleAuthSubmit = () => {
+    // 로그인 또는 회원가입 처리 로직
+    navigate('/dashboard');
+  };
+
+  // const handleFindAccountSubmit = () => {
+  //   // 아이디 찾기 또는 비밀번호 찾기 처리 로직
+  // };
 
   return (
     <div className={`auth-wrapper ${isSignIn ? '' : 'active'}`}>
@@ -57,112 +69,16 @@ const AuthPage = () => {
           </div>
           <div className="input-container">
             {isAuthMode ? (
-              isSignIn ? (
-                <>
-                  <label className="auth-input-field">
-                    이메일
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="이메일을 입력해 주세요"
-                    />
-                  </label>
-                  <label className="auth-input-field">
-                    비밀번호
-                    <input
-                      type="password"
-                      placeholder="비밀번호를 입력해 주세요"
-                    />
-                  </label>
-                </>
-              ) : (
-                <>
-                  <label className="auth-input-field">
-                    이메일
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="이메일을 입력해 주세요"
-                    />
-                  </label>
-                  <label className="auth-input-field">
-                    이메일
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="이메일을 입력해 주세요"
-                    />
-                  </label>
-                  <label className="auth-input-field password-field">
-                    비밀번호
-                    <input
-                      type="password"
-                      placeholder="비밀번호를 입력해 주세요"
-                    />
-                    <input
-                      type="password"
-                      placeholder="비밀번호를 확인해 주세요"
-                    />
-                  </label>
-                  <label className="auth-input-field">
-                    닉네임
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="닉네임을 입력해 주세요"
-                    />
-                  </label>
-                  <label className="auth-input-field">
-                    이메일
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="이메일을 입력해 주세요"
-                    />
-                  </label>
-                  <label className="auth-input-field">
-                    이메일
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="이메일을 입력해 주세요"
-                    />
-                  </label>
-                </>
-              )
-            ) : isFindId ? (
-              <>
-                <label className="auth-input-field">
-                  휴대전화 번호
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="휴대전화 번호를 입력해 주세요"
-                  />
-                </label>
-              </>
+              <AuthenticationForm
+                isSignIn={isSignIn}
+                onSubmit={handleAuthSubmit}
+              />
             ) : (
-              <>
-                <label className="auth-input-field">
-                  비밀번호를 재설정 할 이메일
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="이메일을 입력해 주세요"
-                  />
-                </label>
-              </>
+              <FindAccountForm
+                isFindId={isFindId}
+                // onSubmit={handleFindAccountSubmit}
+              />
             )}
-            <input
-              className={`submit-btn ${isSignIn ? 'active' : ''}`}
-              type="submit"
-              onClick={() => {
-                navigate('/dashboard');
-
-                // navigate('/dashboard', { replace: true });
-              }}
-              value={`${isSignIn ? '로그인' : '회원가입'}`}
-            />
           </div>
           <span className="find-account">
             {isAuthMode ? '계정을 잊으셨나요?' : '계정이 기억나셨나요?'}
@@ -175,23 +91,26 @@ const AuthPage = () => {
             </div>
           </span>
           {isAuthMode ? (
-            <div className="other-auth-options">
-              <span>다른 계정으로 로그인 하기</span>
-              <div className="social-login-options">
-                <div className="social-login-option">
-                  <div className="social-icon"></div>
-                  <span>Google</span>
-                </div>
-                <div className="social-login-option">
-                  <div className="social-icon"></div>
-                  <span>Kakako</span>
-                </div>
-                <div className="social-login-option">
-                  <div className="social-icon"></div>
-                  <span>Naver</span>
+            <>
+              {' '}
+              <div className="other-auth-options">
+                <span>다른 계정으로 로그인 하기</span>
+                <div className="social-login-options">
+                  <div className="social-login-option">
+                    <div className="social-icon"></div>
+                    <span>Google</span>
+                  </div>
+                  <div className="social-login-option">
+                    <div className="social-icon"></div>
+                    <span>Kakako</span>
+                  </div>
+                  <div className="social-login-option">
+                    <div className="social-icon"></div>
+                    <span>Naver</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           ) : (
             <></>
           )}
