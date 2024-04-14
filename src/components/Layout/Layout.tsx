@@ -6,16 +6,17 @@ import LeftNavbar from '../LeftNavbar/LeftNavbar';
 const Layout = () => {
   const location = useLocation();
   return (
-    <div className="layout">
+    <>
       {location.pathname.startsWith('/auth') ? (
-        <>
+        <div className="layout">
           <AuthNavbar />
           <div className="auth-content">
             <Outlet />
           </div>
-        </>
+          <div />
+        </div>
       ) : (
-        <>
+        <div className="layout active">
           <Navbar />
           <div className="wrapper">
             <LeftNavbar />
@@ -23,9 +24,9 @@ const Layout = () => {
               <Outlet />
             </div>
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

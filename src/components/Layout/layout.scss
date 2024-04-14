@@ -8,22 +8,28 @@
   position: relative;
   background: var(--brand-color);
 
+  &.active {
+    background: white;
+  }
+
   .auth-content {
     width: 100%;
     height: 100%;
     margin-top: 60px;
+    background: var(--brand-color);
   }
 
-  // .wrapper {
-  //   display: flex;
-  //   flex-direction: row;
-  // }
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+  }
 
-  // .content {
-  //   width: 100%;
-  //   height: calc(100vh - 100px);
-  //   padding-right: 20px;
-  //   padding-bottom: 20px;
-  //   background: #f7f7fb;
-  // }
+  .content {
+    width: 100%;
+    height: calc(100vh - 80px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background: #f7f7fb;
+  }
 }

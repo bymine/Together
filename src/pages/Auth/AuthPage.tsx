@@ -91,26 +91,23 @@ const AuthPage = () => {
             </div>
           </span>
           {isAuthMode ? (
-            <>
-              {' '}
-              <div className="other-auth-options">
-                <span>다른 계정으로 로그인 하기</span>
-                <div className="social-login-options">
-                  <div className="social-login-option">
-                    <div className="social-icon"></div>
-                    <span>Google</span>
-                  </div>
-                  <div className="social-login-option">
-                    <div className="social-icon"></div>
-                    <span>Kakako</span>
-                  </div>
-                  <div className="social-login-option">
-                    <div className="social-icon"></div>
-                    <span>Naver</span>
-                  </div>
+            <div className="other-auth-options">
+              <span>다른 계정으로 로그인 하기</span>
+              <div className="social-login-options">
+                <div className="social-login-option">
+                  <div className="social-icon"></div>
+                  <span>Google</span>
+                </div>
+                <div className="social-login-option">
+                  <div className="social-icon"></div>
+                  <span>Kakako</span>
+                </div>
+                <div className="social-login-option">
+                  <div className="social-icon"></div>
+                  <span>Naver</span>
                 </div>
               </div>
-            </>
+            </div>
           ) : (
             <></>
           )}

@@ -86,7 +86,7 @@ const FindAccountForm = ({ isFindId }: FindAccountFormProps) => {
           className={`submit-btn active `}
           type="submit"
           onClick={isFindId ? hadnleEmailSubmt : hadnlePwSubmit}
-          value={`${isFindId ? (isOkay ? '확인' : '아이디 찾기') : isOkay ? '비밀번호 찾기' : '저장하기'}`}
+          value={`${isFindId ? (isOkay ? '확인' : '아이디 찾기') : isOkay ? '저장하기' : '비밀번호 찾기'}`}
         />
       </div>
     </div>
