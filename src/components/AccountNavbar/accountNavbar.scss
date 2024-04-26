@@ -1,0 +1,81 @@
+.authNavbar-wrapper {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: var(--brand-color);
+
+  .authNavbar {
+    width: 1200px;
+    height: 60px;
+    color: #fff;
+    display: grid;
+    grid-template-columns: auto 468px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .authNavbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .authNavbar__logo-img {
+    width: 30px;
+    height: 30px;
+    background: #f200ff;
+    border-radius: 4px;
+  }
+
+  .authNavbar__logo p {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: bold;
+  }
+  .authNavbar__options {
+    text-align: end;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .authNavbar-wrapper {
+    .authNavbar {
+      width: 318px;
+      grid-template-columns: auto auto;
+    }
+  }
+}
+
+@media screen and (min-width: 361px) and (max-width: 575px) {
+  .authNavbar-wrapper {
+    .authNavbar {
+      padding: 0 2rem 0 2rem;
+
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .authNavbar-wrapper {
+    .authNavbar {
+      padding: 0 2rem 0 2rem;
+
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1100px) {
+  .authNavbar-wrapper {
+    .authNavbar {
+      width: 900px;
+      grid-template-columns: auto 380px;
+    }
+  }
+}

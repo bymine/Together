@@ -1,0 +1,34 @@
+.layout {
+  width: 100%;
+  height: 100vh;
+  overflow: auto; // height 동적으로 사이즈 조절
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--brand-color);
+
+  &.active {
+    background: white;
+  }
+
+  .auth-content {
+    width: 100%;
+    height: 100%;
+    background: var(--brand-color);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+  }
+
+  .content {
+    width: 100%;
+    height: calc(100vh - 80px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+    background: #f7f7fb;
+  }
+}

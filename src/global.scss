@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --brand-color: #3b5ccf; /* Primary color */
+  --text-color: #111111; /* Text color */
+  --sub-text-color: #505050; /* Sub Text color */
+  --sub-text-color2: #767676; /* Sub Text color */
+  --bg-dark-color: #f1f1f5; /* Background dark color */
+  --bg-light-color: #f7f7fb; /* Background light color */
+  --divider--dark-color: #111111; /* Divider Dark color */
+  --divier-light-color: #e5e5ec; /* Divier light color */
+}
+
+.auth-input-field {
+  font-size: 13px;
+
+  input {
+    width: 100%;
+    height: 48px;
+
+    margin: 0.5rem 0 2rem 0;
+    padding: 16px;
+    display: block;
+
+    border: 1px solid var(--divier-light-color);
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+
+    &:focus {
+      border: 2px solid var(--brand-color);
+    }
+
+    &::placeholder {
+      font-size: 14px;
+      color: var(--sub-text-color2);
+    }
+  }
+}
