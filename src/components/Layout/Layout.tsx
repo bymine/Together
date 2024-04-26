@@ -1,15 +1,15 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import './layout.scss';
-import AuthNavbar from '../AuthNavbar/AuthNavbar';
+import AccountNavbar from '../AccountNavbar/AccountNavbar';
 import Navbar from '../Navbar/Navbar';
 import LeftNavbar from '../LeftNavbar/LeftNavbar';
 const Layout = () => {
   const location = useLocation();
   return (
     <>
-      {location.pathname.startsWith('/auth') ? (
+      {location.pathname.startsWith('/account') ? (
         <div className="layout">
-          <AuthNavbar />
+          <AccountNavbar />
           <div className="auth-content">
             <Outlet />
           </div>

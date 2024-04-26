@@ -42,25 +42,6 @@
   }
 }
 
-// @media screen and (max-width: 767px) {
-//   .authNavbar {
-//     padding: 0rem 2rem 0rem 2rem;
-//   }
-// }
-
-// @media screen and (min-width: 768px) and (max-width: 1023px) {
-//   .authNavbar {
-//     padding: 0rem 4rem 0rem 4rem;
-//   }
-// }
-
-// @media screen and (min-width: 1024px) and (max-width: 1600px) {
-//   .authNavbar {
-//     padding: 0rem 12rem 0rem 12rem;
-//     gap: 2rem;
-//   }
-// }
-
 @media screen and (max-width: 360px) {
   .authNavbar-wrapper {
     .authNavbar {
@@ -70,19 +51,30 @@
   }
 }
 
-@media screen and (min-width: 361px) and (max-width: 767px) {
+@media screen and (min-width: 361px) and (max-width: 575px) {
   .authNavbar-wrapper {
     .authNavbar {
-      width: 500px;
-      grid-template-columns: auto auto;
+      padding: 0 2rem 0 2rem;
+
+      grid-template-columns: 1fr 1fr;
     }
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 990px) {
+@media screen and (min-width: 576px) and (max-width: 767px) {
   .authNavbar-wrapper {
     .authNavbar {
-      width: 700px;
+      padding: 0 2rem 0 2rem;
+
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1100px) {
+  .authNavbar-wrapper {
+    .authNavbar {
+      width: 900px;
       grid-template-columns: auto 380px;
     }
   }

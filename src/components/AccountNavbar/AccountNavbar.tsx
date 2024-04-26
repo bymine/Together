@@ -1,4 +1,4 @@
-import './authNavbar.scss';
+import './accountNavbar.scss';
 const AuthNavbar = () => {
   return (
     <div className="authNavbar-wrapper">

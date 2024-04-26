@@ -1,49 +1,24 @@
 import { useState } from 'react';
-import './findAccountForm.scss';
+import { Link } from 'react-router-dom';
+import './account.scss';
 
-interface FindAccountFormProps {
-  isFindId: boolean;
-  //   onSubmit: React.MouseEventHandler<HTMLInputElement>;
-}
-
-const FindAccountForm = ({ isFindId }: FindAccountFormProps) => {
+const FindPwForm = () => {
   const [isOkay, setIsOkay] = useState(false);
-
-  const hadnleEmailSubmt = () => {
-    setIsOkay(!isOkay);
-  };
   const hadnlePwSubmit = () => {
     setIsOkay(!isOkay);
   };
   return (
-    <div className="find-account-form">
+    <div className="account-form">
+      <div className="auth-toggle">
+        <Link to="/account/find_id" className={`btn `}>
+          아이디 찾기
+        </Link>
+        <Link to="/account/find_pw" className={`btn active`}>
+          비밀번호 찾기
+        </Link>
+      </div>
       <div className="input-container">
-        {isFindId ? (
-          isOkay ? (
-            <>
-              <span className="title">이메일 찾기</span>
-              <span className="description">
-                {`아이디 찾기가 완료되었습니다.`}
-              </span>
-              <div>frfr0723@gmail.com</div>
-            </>
-          ) : (
-            <>
-              <span className="title">이메일 찾기</span>
-              <span className="description">
-                {`회원정보에 등록한 휴대전화를 입력해 주세요.`}
-              </span>
-              <label className="auth-input-field">
-                휴대전화 번호
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="휴대전화 번호를 입력해 주세요"
-                />
-              </label>
-            </>
-          )
-        ) : isOkay ? (
+        {isOkay ? (
           <>
             <span className="title">비밀번호 재설정</span>
             <span className="description">
@@ -82,15 +57,16 @@ const FindAccountForm = ({ isFindId }: FindAccountFormProps) => {
             </label>
           </>
         )}
+
         <input
-          className={`submit-btn active `}
+          className={`submit-btn `}
           type="submit"
-          onClick={isFindId ? hadnleEmailSubmt : hadnlePwSubmit}
-          value={`${isFindId ? (isOkay ? '확인' : '아이디 찾기') : isOkay ? '저장하기' : '비밀번호 찾기'}`}
+          onClick={hadnlePwSubmit}
+          value={'비밀번호 찾기'}
         />
       </div>
     </div>
   );
 };
 
-export default FindAccountForm;
+export default FindPwForm;
