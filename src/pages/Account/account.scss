@@ -5,7 +5,7 @@
   padding-bottom: 2rem;
   margin-bottom: 2rem;
 
-  .auth-toggle {
+  .auth-switch {
     display: flex;
     height: 50px;
     background: var(--bg-dark-color);
@@ -22,7 +22,7 @@
       color: var(--sub-text-color);
       font-size: 18px;
 
-      &.active {
+      &.selected {
         background: #fff;
         border-top-right-radius: 20px;
         color: var(--brand-color);
@@ -37,6 +37,11 @@
 
   .input-container {
     padding: 2rem;
+
+    .error-msg {
+      display: block;
+      color: red;
+    }
 
     .submit-btn {
       margin: 2rem 0 1rem 0;

@@ -9,11 +9,11 @@ const FindPwForm = () => {
   };
   return (
     <div className="account-form">
-      <div className="auth-toggle">
+      <div className="auth-switch">
         <Link to="/account/find_id" className={`btn `}>
           아이디 찾기
         </Link>
-        <Link to="/account/find_pw" className={`btn active`}>
+        <Link to="/account/find_pw" className={`btn selected`}>
           비밀번호 찾기
         </Link>
       </div>

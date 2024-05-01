@@ -1,40 +1,65 @@
+import { useState } from 'react';
 import './account.scss';
 import { Link } from 'react-router-dom';
+import { loginUser } from '../../api/auth';
 const LoginForm = () => {
+  const [formData, setFormData] = useState({
+    userId: '',
+    userPw: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const response = await loginUser(formData);
+      console.log(response);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="account-form">
-      <div className="auth-toggle">
-        <Link to={'/account/login'} className={`btn active`}>
+      <div className="auth-switch">
+        <Link to={'/account/login'} className={`btn selected`}>
           로그인
         </Link>
         <Link to={'/account/register'} className={`btn`}>
           회원가입
         </Link>
       </div>
-      <div className="input-container">
+      <form className="input-container" onSubmit={handleSubmit}>
         <label className="auth-input-field">
           이메일
           <input
             type="text"
-            name="userEmail"
+            name="userId"
             placeholder="이메일을 입력해 주세요"
+            value={formData.userId}
+            onChange={handleChange}
           />
         </label>
         <label className="auth-input-field">
           비밀번호
           <input
             type="password"
-            name="userPassword"
+            name="userPw"
             placeholder="비밀번호를 입력해 주세요"
+            value={formData.userPw}
+            onChange={handleChange}
           />
         </label>
-        <input
-          className={`submit-btn active`}
-          type="submit"
-          onClick={() => {}}
-          value={'로그인'}
-        />
-      </div>
+        <input className={`submit-btn active`} type="submit" value={'로그인'} />
+      </form>
       <span className="find-account">
         {'계정을 잊으셨나요?'}
         <Link to={'/account/find_id'} className="find-account-btn">
