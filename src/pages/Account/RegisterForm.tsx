@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import './account.scss';
 
 import useRegisterHook from '../../hooks/Account/useRegister';
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 const RegisterForm = () => {
   const {
     formRegister,
@@ -13,6 +14,11 @@ const RegisterForm = () => {
     onClickVerifyCode,
     verifyComplete,
     activeCodeInput,
+    activeSubmit,
+    showPassword,
+    showPasswordConfirmation,
+    handleTogglePasswordVisibility,
+    handleToggleConfirmationPasswordVisibility,
   } = useRegisterHook();
 
   return (
@@ -55,21 +61,37 @@ const RegisterForm = () => {
         </label>
         <label className="auth-input-field group-field">
           비밀번호
-          <input
-            type="password"
-            name="userPw"
-            placeholder="비밀번호를 입력해 주세요"
-            value={formRegister.userPw}
-            onChange={handleChange}
-          />
+          <div className="password-container">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="userPw"
+              placeholder="비밀번호를 입력해 주세요"
+              value={formRegister.userPw}
+              onChange={handleChange}
+            />
+            <div className="icon" onClick={handleTogglePasswordVisibility}>
+              {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </div>
+          </div>
           {errors.userPw && <span className="error-msg">{errors.userPw}</span>}
-          <input
-            type="password"
-            name="userPw2"
-            placeholder="비밀번호를 확인해 주세요"
-            value={formRegister.userPw2}
-            onChange={handleChange}
-          />
+          <div className="password-container">
+            <input
+              type={showPasswordConfirmation ? 'text' : 'password'}
+              name="userPw2"
+              placeholder="비밀번호를 확인해 주세요"
+              value={formRegister.userPw2}
+              onChange={handleChange}
+            />
+            <div
+              className="icon"
+              onClick={handleToggleConfirmationPasswordVisibility}>
+              {showPasswordConfirmation ? (
+                <VisibilityOffIcon />
+              ) : (
+                <VisibilityIcon />
+              )}
+            </div>
+          </div>
           {errors.userPw2 && (
             <span className="error-msg">{errors.userPw2}</span>
           )}
@@ -87,7 +109,12 @@ const RegisterForm = () => {
           {errors.name && <span className="error-msg">{errors.name}</span>}
         </label>
 
-        <input className={`submit-btn `} type="submit" value={'회원가입'} />
+        <input
+          className={`submit-btn ${activeSubmit ? 'active' : ''}`}
+          type="submit"
+          disabled={!activeSubmit}
+          value={'회원가입'}
+        />
       </form>
     </div>
   );

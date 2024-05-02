@@ -29,6 +29,17 @@ const useRegisterHook = () => {
     code: false,
   });
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordConfirmation, setShowPasswordConfirmation] =
+    useState(false);
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleToggleConfirmationPasswordVisibility = () => {
+    setShowPasswordConfirmation(!showPasswordConfirmation);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -187,6 +198,15 @@ const useRegisterHook = () => {
   const activeCodeInput =
     formRegister.email && verifyStatus.email && !verifyStatus.code;
 
+  const activeSubmit =
+    !errors.code &&
+    !errors.email &&
+    !errors.name &&
+    !errors.userPw &&
+    !errors.userPw2 &&
+    verifyStatus.code &&
+    verifyStatus.email;
+
   return {
     formRegister,
     errors,
@@ -196,6 +216,11 @@ const useRegisterHook = () => {
     onClickVerifyCode,
     verifyComplete,
     activeCodeInput,
+    activeSubmit,
+    showPassword,
+    showPasswordConfirmation,
+    handleTogglePasswordVisibility,
+    handleToggleConfirmationPasswordVisibility,
   };
 };
 

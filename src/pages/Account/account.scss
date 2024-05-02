@@ -38,6 +38,20 @@
   .input-container {
     padding: 2rem;
 
+    .password-container {
+      position: relative;
+
+      .icon {
+        color: var(--sub-text-color2);
+
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        right: 1rem;
+        cursor: pointer;
+      }
+    }
+
     .error-msg {
       display: block;
       color: red;
@@ -61,14 +75,6 @@
       &.active {
         color: white;
         background: var(--brand-color);
-      }
-    }
-
-    .group-field {
-      input {
-        &:first-child {
-          margin: 0.75rem 0 0.5rem 0;
-        }
       }
     }
 
