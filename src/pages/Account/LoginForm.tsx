@@ -1,31 +1,17 @@
-import { useState } from 'react';
 import './account.scss';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../../api/auth';
+import useLoginHook from '../../hooks/Account/useLogin';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 const LoginForm = () => {
-  const [formData, setFormData] = useState({
-    userId: '',
-    userPw: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const response = await loginUser(formData);
-      console.log(response);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const {
+    formLogin,
+    errors,
+    handleChange,
+    handleSubmit,
+    showPassword,
+    handleTogglePasswordVisibility,
+  } = useLoginHook();
 
   return (
     <div className="account-form">
@@ -44,20 +30,30 @@ const LoginForm = () => {
             type="text"
             name="userId"
             placeholder="이메일을 입력해 주세요"
-            value={formData.userId}
+            value={formLogin.userId}
             onChange={handleChange}
           />
+          {errors.userId && <span className="error-msg">{errors.userId}</span>}
         </label>
         <label className="auth-input-field">
           비밀번호
-          <input
-            type="password"
-            name="userPw"
-            placeholder="비밀번호를 입력해 주세요"
-            value={formData.userPw}
-            onChange={handleChange}
-          />
+          <div className="password-container">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="userPw"
+              placeholder="비밀번호를 입력해 주세요"
+              value={formLogin.userPw}
+              onChange={handleChange}
+            />
+            <div className="icon" onClick={handleTogglePasswordVisibility}>
+              {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </div>
+          </div>
+          {errors.userPw && <span className="error-msg">{errors.userPw}</span>}
         </label>
+        {errors.description && (
+          <span className="error-msg">{errors.description}</span>
+        )}
         <input className={`submit-btn active`} type="submit" value={'로그인'} />
       </form>
       <span className="find-account">

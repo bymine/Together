@@ -22,10 +22,9 @@ interface VerifyData {
 export const loginUser = async (loginData: LoginData) => {
   try {
     const response = await axiosInstance.post('/auth', loginData);
-    console.log(response);
-    return response.data;
-  } catch (e) {
-    console.log(e);
+    return response;
+  } catch (error) {
+    throw error;
   }
 };
 

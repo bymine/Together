@@ -1,9 +1,10 @@
 import axios from 'axios';
-
 // axios 모듈화
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const axiosInstance = axios.create({
-  baseURL: 'https://sjna.xyz/teamup/api/web/',
+  baseURL: API_URL,
   headers: {
     Authorization: 'Bearer/ ',
   },
