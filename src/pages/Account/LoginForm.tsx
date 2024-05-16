@@ -33,7 +33,6 @@ const LoginForm = () => {
             value={formLogin.userId}
             onChange={handleChange}
           />
-          {errors.userId && <span className="error-msg">{errors.userId}</span>}
         </label>
         <label className="auth-input-field">
           비밀번호
@@ -49,11 +48,8 @@ const LoginForm = () => {
               {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
             </div>
           </div>
-          {errors.userPw && <span className="error-msg">{errors.userPw}</span>}
         </label>
-        {errors.description && (
-          <span className="error-msg">{errors.description}</span>
-        )}
+        {errors && <span className="error-msg">{errors}</span>}
         <input className={`submit-btn active`} type="submit" value={'로그인'} />
       </form>
       <span className="find-account">

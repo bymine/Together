@@ -1,4 +1,5 @@
 import axiosInstance from './axios';
+import { getCookie, removeCookie, setCookie } from './Cookie';
 
 interface LoginData {
   userId: string;
@@ -22,6 +23,13 @@ interface VerifyData {
 export const loginUser = async (loginData: LoginData) => {
   try {
     const response = await axiosInstance.post('/auth', loginData);
+    axiosInstance.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
+    removeCookie('refreshToken');
+    setCookie('refreshToken', response.data.refreshTokenIdxHash, {
+      httpOnly: true,
+      secure: true,
+    });
+    silentRefresh();
     return response;
   } catch (error) {
     throw error;
@@ -55,7 +63,18 @@ export const registerUser = async (registerUser: RegisterData) => {
   try {
     const response = await axiosInstance.post('/user', registerUser);
     return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const silentRefresh = async () => {
+  try {
+    const response = await axiosInstance.get(
+      `/auth/renewal?refreshTokenIdxHash=${getCookie('refreshToken')}`,
+    );
+    console.log(response);
   } catch (e) {
-    console.log(e);
+    throw e;
   }
 };
