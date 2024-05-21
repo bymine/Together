@@ -3,21 +3,22 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import AccountLayout from './components/AccountLayout/AccountLayout';
+import AccountLayout from './components/Layout/AccountLayout/AccountLayout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import SchedulePage from './pages/Schedule/SchedulePage';
 import LoginForm from './pages/Account/LoginForm';
 import RegisterForm from './pages/Account/RegisterForm';
 import FindIdForm from './pages/Account/FindIdForm';
 import FindPwForm from './pages/Account/FindPwForm';
+import AccountSetting from './pages/Setting/AccountSetting';
+import MainLayout from './components/Layout/MainLayout/MainLayout';
 
 const Router = () => {
   const isLoggedIn = false;
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout />,
+      element: <MainLayout />,
       children: [
         {
           path: '/',
@@ -56,6 +57,10 @@ const Router = () => {
         {
           path: '/:channel/schedule',
           element: <SchedulePage />,
+        },
+        {
+          path: '/users/:setting',
+          element: <AccountSetting />,
         },
       ],
     },

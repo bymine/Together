@@ -1,12 +1,14 @@
 .navbar {
-  min-height: 80px;
+  min-height: 64px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-right: 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid #e5e5ec;
 }
 
 .navbar__logo {
+  flex: 1;
   padding-left: 20px;
   display: flex;
   align-items: center;
@@ -15,10 +17,11 @@
 }
 
 .navbar__menu-icon {
-  width: 40px;
-  height: 40px;
-  background: #f200ff;
-  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
 }
 
 .navbar__logo p {
@@ -28,7 +31,6 @@
 }
 
 .navbar__user {
-  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -36,8 +38,8 @@
 }
 
 .navbar__user-image {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #f200ff;
 }
@@ -65,47 +67,12 @@
   gap: 1rem;
 }
 
-.message,
-.alarm {
-  border: 1px solid #9a9a9a;
-  position: relative;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .message_icon,
 .alarm_icon {
   width: 24px;
   height: 24px;
-  background: #f200ff;
   border-radius: 50%;
-}
-
-.message_count {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #e05d5d;
-  font-size: 10px;
-  text-align: center;
-  color: #fff;
-  right: -4px;
-  top: -4px;
-}
-
-.alarm__update {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #3b5ccf;
-  right: 0px;
-  top: 4px;
+  cursor: pointer;
 }
 
 .navbar__input-box {
@@ -113,12 +80,19 @@
 }
 
 input {
-  width: 400px;
-  height: 48px;
+  position: relative;
+
+  width: 200px;
+  height: 40px;
   border-radius: 8px;
   outline: none;
   border: 1px solid #e5e5ec;
-  padding: 1rem 4rem 1rem 1.5rem;
+  padding: 1rem;
+
+  &:hover {
+    cursor: pointer;
+    background: #e5e5ec;
+  }
 }
 
 .input-suffix {
@@ -126,16 +100,7 @@ input {
   width: 24px;
   height: 24px;
   border-radius: 4px;
-  background: #f200ff;
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
-}
-
-.navbar__setting {
-  margin-left: 2rem;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  background: #f200ff;
 }

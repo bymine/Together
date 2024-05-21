@@ -1,9 +1,10 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import './layout.scss';
-import AccountNavbar from '../AccountNavbar/AccountNavbar';
-import Navbar from '../Navbar/Navbar';
-import LeftNavbar from '../LeftNavbar/LeftNavbar';
-const Layout = () => {
+import './mainLayout.scss';
+import Navbar from '../../Navbar/MainNavbar/MainNavbar';
+import SettingSidebar from '../../Lnb/SettingLnb/SettingLnb';
+import ChannelLnb from '../../Lnb/ChannelLnb/ChannelLnb';
+import AccountNavbar from '../../Navbar/AccountNavbar/AccountNavbar';
+const MainLayout = () => {
   const location = useLocation();
   return (
     <>
@@ -19,7 +20,12 @@ const Layout = () => {
         <div className="layout active">
           <Navbar />
           <div className="wrapper">
-            <LeftNavbar />
+            {location.pathname.startsWith('/users') ? (
+              <SettingSidebar />
+            ) : (
+              <ChannelLnb />
+            )}
+
             <div className="content">
               <Outlet />
             </div>
@@ -30,4 +36,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default MainLayout;

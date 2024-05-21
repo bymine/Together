@@ -1,0 +1,61 @@
+.setting__wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .setting__title {
+    margin: 2rem 0;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  .setting__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+
+    .setting__name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .setting__content {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: white;
+      border: #d7e2eb solid 1px;
+      border-radius: 15px;
+
+      .edit__field {
+        display: block;
+        margin: 0 0 1.5rem 0;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+
+    .setting__edit {
+      align-self: flex-end;
+      margin-top: 40px;
+      border: none;
+      padding: 12px 19px;
+      background: #0078ff;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .edit-btns {
+      display: flex;
+      gap: 2rem;
+
+      align-self: flex-end;
+    }
+  }
+}

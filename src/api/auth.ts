@@ -25,10 +25,7 @@ export const loginUser = async (loginData: LoginData) => {
     const response = await axiosInstance.post('/auth', loginData);
     axiosInstance.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
     removeCookie('refreshToken');
-    setCookie('refreshToken', response.data.refreshTokenIdxHash, {
-      httpOnly: true,
-      secure: true,
-    });
+    setCookie('refreshToken', response.data.refreshTokenIdxHash, {});
     silentRefresh();
     return response;
   } catch (error) {
@@ -78,3 +75,9 @@ export const silentRefresh = async () => {
     throw e;
   }
 };
+
+// export const findPassword = async (email: string) => {
+//   try{
+//     const response = await axiosInstance.get(`/user/link/password`)
+//   }
+// };
