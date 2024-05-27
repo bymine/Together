@@ -3,28 +3,29 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
-import Layout from './components/Layout/Layout';
-import AccountLayout from './components/AccountLayout/AccountLayout';
+import AccountLayout from './components/Layout/AccountLayout/AccountLayout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import SchedulePage from './pages/Schedule/SchedulePage';
 import LoginForm from './pages/Account/LoginForm';
 import RegisterForm from './pages/Account/RegisterForm';
 import FindIdForm from './pages/Account/FindIdForm';
 import FindPwForm from './pages/Account/FindPwForm';
+import AccountSetting from './pages/Setting/AccountSetting';
+import MainLayout from './components/Layout/MainLayout/MainLayout';
+import ChangePwForm from './pages/Account/ChangePwForm';
 
 const Router = () => {
-  const isLoggedIn = false;
+  const isLogin = localStorage.getItem('refreshToken') !== null ? true : false;
+
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout />,
+      element: <MainLayout />,
       children: [
         {
           path: '/',
-          element: isLoggedIn ? (
-            <Navigate to="/dashboard" replace />
-          ) : (
-            <Navigate to="/account/login" replace />
+          element: (
+            <Navigate to={isLogin ? '/dashboard' : '/account/login'} replace />
           ),
         },
         {
@@ -47,6 +48,10 @@ const Router = () => {
               path: 'find_pw',
               element: <FindPwForm />,
             },
+            {
+              path: 'changePwd/:random1/:random2',
+              element: <ChangePwForm />,
+            },
           ],
         },
         {
@@ -56,6 +61,10 @@ const Router = () => {
         {
           path: '/:channel/schedule',
           element: <SchedulePage />,
+        },
+        {
+          path: '/users/:setting',
+          element: <AccountSetting />,
         },
       ],
     },

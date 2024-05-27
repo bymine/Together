@@ -1,6 +1,6 @@
-import ChannelCard from '../ChannelCard/ChannelCard';
-import './leftNavbar.css';
-const LeftNavbar = () => {
+import ChannelCard from '../../ChannelCard/ChannelCard';
+import './channelLnb.css';
+const ChannelLnb = () => {
   return (
     <div className="leftNavbar">
       <div className="leftNavbar__dash-btn">
@@ -14,4 +14,4 @@ const LeftNavbar = () => {
   );
 };
 
-export default LeftNavbar;
+export default ChannelLnb;

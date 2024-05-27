@@ -1,40 +1,57 @@
 import './account.scss';
 import { Link } from 'react-router-dom';
+import useLoginHook from '../../hooks/Account/useLogin';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 const LoginForm = () => {
+  const {
+    formLogin,
+    errors,
+    handleChange,
+    handleSubmit,
+    showPassword,
+    handleTogglePasswordVisibility,
+  } = useLoginHook();
+
   return (
     <div className="account-form">
-      <div className="auth-toggle">
-        <Link to={'/account/login'} className={`btn active`}>
+      <div className="auth-switch">
+        <Link to={'/account/login'} className={`btn selected`}>
           로그인
         </Link>
         <Link to={'/account/register'} className={`btn`}>
           회원가입
         </Link>
       </div>
-      <div className="input-container">
+      <form className="input-container" onSubmit={handleSubmit}>
         <label className="auth-input-field">
           이메일
           <input
             type="text"
-            name="userEmail"
+            name="userId"
             placeholder="이메일을 입력해 주세요"
+            value={formLogin.userId}
+            onChange={handleChange}
           />
         </label>
         <label className="auth-input-field">
           비밀번호
-          <input
-            type="password"
-            name="userPassword"
-            placeholder="비밀번호를 입력해 주세요"
-          />
+          <div className="password-container">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              name="userPw"
+              placeholder="비밀번호를 입력해 주세요"
+              value={formLogin.userPw}
+              onChange={handleChange}
+            />
+            <div className="icon" onClick={handleTogglePasswordVisibility}>
+              {showPassword ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            </div>
+          </div>
         </label>
-        <input
-          className={`submit-btn active`}
-          type="submit"
-          onClick={() => {}}
-          value={'로그인'}
-        />
-      </div>
+        {errors && <span className="error-msg">{errors}</span>}
+        <input className={`submit-btn active`} type="submit" value={'로그인'} />
+      </form>
       <span className="find-account">
         {'계정을 잊으셨나요?'}
         <Link to={'/account/find_id'} className="find-account-btn">

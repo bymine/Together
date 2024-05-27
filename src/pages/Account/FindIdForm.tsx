@@ -10,8 +10,8 @@ const FindIdForm = () => {
 
   return (
     <div className="account-form">
-      <div className="auth-toggle">
-        <Link to="/account/find_id" className={`btn active`}>
+      <div className="auth-switch">
+        <Link to="/account/find_id" className={`btn selected`}>
           아이디 찾기
         </Link>
         <Link to="/account/find_pw" className={`btn`}>

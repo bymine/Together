@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import './accountLayout.scss';
-const AuthPage = () => {
+const AccountLayout = () => {
   return (
-    <div className={`auth-wrapper `}>
+    <div className="auth-wrapper">
       <div className="auth-container">
         <div className="welcome-section">
           <div className="welcome-text">
@@ -17,4 +17,4 @@ const AuthPage = () => {
   );
 };
 
-export default AuthPage;
+export default AccountLayout;

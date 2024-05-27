@@ -1,0 +1,114 @@
+.navbar {
+  min-height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+
+  .navbar__logo {
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 240px;
+
+    .lnb__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      border-radius: 4px;
+      border: none;
+      background: none;
+
+      cursor: pointer;
+
+      &:hover {
+        background: #f2f8ff;
+      }
+    }
+  }
+
+  .navbar__options {
+    display: flex;
+    align-items: center;
+
+    .navbar__input-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #e5e5ec;
+      width: 160px;
+      height: 40px;
+      border-radius: 12px;
+      color: #333333;
+      cursor: pointer;
+      padding: 0 1rem;
+      background: rgb(246, 247, 248);
+
+      p {
+        flex: 1;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &:hover {
+        background: #f2f8ff;
+      }
+    }
+
+    .navbar__user {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+
+      .navbar__user-image {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #f200ff;
+      }
+
+      .navbar__alert {
+        margin-left: 2rem;
+        display: flex;
+        flex-direction: row;
+
+        gap: 1rem;
+
+        .message_icon,
+        .alarm_icon {
+          padding: 4px;
+          border-radius: 4px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            background: #f2f8ff;
+          }
+        }
+      }
+    }
+  }
+
+  .search__dialog {
+    div {
+      padding: 1rem;
+      border: 1px solid aqua;
+    }
+
+    .search__dialog-input {
+      width: 100%;
+      border: none;
+      padding: 1rem;
+    }
+    span {
+      font-size: 30px;
+    }
+  }
+}
