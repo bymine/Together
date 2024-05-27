@@ -3,10 +3,12 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { isValidatePassword } from '../../utils/validationUtils';
 import { changePassword } from '../../api/auth';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 const ChangePwForm = () => {
   const navigate = useNavigate();
-  const { random1, random2 } = useParams();
+  const [searchParams] = useSearchParams();
+  const random1 = searchParams.get('random1');
+  const random2 = searchParams.get('random2');
   const [passwords, setPasswords] = useState({
     userPw: '',
     userPw2: '',
