@@ -1,5 +1,4 @@
 import axiosInstance from './axios';
-import { getCookie, removeCookie, setCookie } from './Cookie';
 
 interface LoginData {
   userId: string;
@@ -23,10 +22,8 @@ interface VerifyData {
 export const loginUser = async (loginData: LoginData) => {
   try {
     const response = await axiosInstance.post('/auth', loginData);
-    axiosInstance.defaults.headers.Authorization = `Bearer ${response.data.accessToken}`;
-    removeCookie('refreshToken');
-    setCookie('refreshToken', response.data.refreshTokenIdxHash, {});
-    silentRefresh();
+    localStorage.setItem('accessToken', response.data.accessToken);
+    localStorage.setItem('refreshToken', response.data.refreshTokenIdxHash);
     return response;
   } catch (error) {
     throw error;
@@ -68,7 +65,7 @@ export const registerUser = async (registerUser: RegisterData) => {
 export const silentRefresh = async () => {
   try {
     const response = await axiosInstance.get(
-      `/auth/renewal?refreshTokenIdxHash=${getCookie('refreshToken')}`,
+      `/auth/renewal?refreshTokenIdxHash=${localStorage.getItem('refreshToken')}`,
     );
     console.log(response);
   } catch (e) {
@@ -81,3 +78,8 @@ export const silentRefresh = async () => {
 //     const response = await axiosInstance.get(`/user/link/password`)
 //   }
 // };
+
+export const logOut = () => {
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('refreshToken');
+};

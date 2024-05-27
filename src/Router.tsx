@@ -14,7 +14,8 @@ import AccountSetting from './pages/Setting/AccountSetting';
 import MainLayout from './components/Layout/MainLayout/MainLayout';
 
 const Router = () => {
-  const isLoggedIn = false;
+  const isLogin = localStorage.getItem('refreshToken') !== null ? true : false;
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -22,10 +23,8 @@ const Router = () => {
       children: [
         {
           path: '/',
-          element: isLoggedIn ? (
-            <Navigate to="/dashboard" replace />
-          ) : (
-            <Navigate to="/account/login" replace />
+          element: (
+            <Navigate to={isLogin ? '/dashboard' : '/account/login'} replace />
           ),
         },
         {

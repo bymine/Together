@@ -17,6 +17,7 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { logOut } from '../../../api/auth';
 
 const MainNavbar = () => {
   const navigate = useNavigate();
@@ -106,7 +107,7 @@ const MainNavbar = () => {
               <MenuItem divider={true} sx={{ padding: 2, fontSize: '14px' }}>
                 마이페이지
               </MenuItem>
-              <MenuItem sx={{ padding: 2, fontSize: '14px' }}>
+              <MenuItem sx={{ padding: 2, fontSize: '14px' }} onClick={logOut}>
                 로그아웃
               </MenuItem>
             </Box>
