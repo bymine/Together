@@ -19,6 +19,13 @@ interface VerifyData {
   verificationCode: string;
 }
 
+interface ChangePasswordData {
+  userPw: string;
+  userPw2: string;
+  randomValue1: string;
+  randomValue2: string;
+}
+
 export const loginUser = async (loginData: LoginData) => {
   try {
     const response = await axiosInstance.post('/auth', loginData);
@@ -73,11 +80,25 @@ export const silentRefresh = async () => {
   }
 };
 
-// export const findPassword = async (email: string) => {
-//   try{
-//     const response = await axiosInstance.get(`/user/link/password`)
-//   }
-// };
+export const findPassword = async (email: string) => {
+  try {
+    const response = await axiosInstance.get(`/user/link/password/${email}`);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const changePassword = async (
+  changePasswordData: ChangePasswordData,
+) => {
+  try {
+    const response = await axiosInstance.patch(`/password`, changePasswordData);
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const logOut = () => {
   localStorage.removeItem('accessToken');

@@ -12,6 +12,7 @@ import FindIdForm from './pages/Account/FindIdForm';
 import FindPwForm from './pages/Account/FindPwForm';
 import AccountSetting from './pages/Setting/AccountSetting';
 import MainLayout from './components/Layout/MainLayout/MainLayout';
+import ChangePwForm from './pages/Account/ChangePwForm';
 
 const Router = () => {
   const isLogin = localStorage.getItem('refreshToken') !== null ? true : false;
@@ -46,6 +47,10 @@ const Router = () => {
             {
               path: 'find_pw',
               element: <FindPwForm />,
+            },
+            {
+              path: 'changePwd/:random1/:random2',
+              element: <ChangePwForm />,
             },
           ],
         },
