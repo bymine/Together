@@ -49,7 +49,7 @@ const Router = () => {
               element: <FindPwForm />,
             },
             {
-              path: 'changePwd/:random1/:random2',
+              path: 'changePwd',
               element: <ChangePwForm />,
             },
           ],
