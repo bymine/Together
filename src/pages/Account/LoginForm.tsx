@@ -1,8 +1,10 @@
 import './account.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useLoginHook from '../../hooks/Account/useLogin';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { Snackbar } from '@mui/material';
+import { useEffect, useState } from 'react';
 const LoginForm = () => {
   const {
     formLogin,
@@ -13,8 +15,36 @@ const LoginForm = () => {
     handleTogglePasswordVisibility,
   } = useLoginHook();
 
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const state = location.state;
+
+  useEffect(() => {
+    if (state !== null) {
+      setOpen(true);
+    }
+  }, [state]);
+
+  const handleClose = (
+    _event: React.SyntheticEvent | Event,
+    reason?: string,
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <div className="account-form">
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        open={open}
+        autoHideDuration={5000}
+        message={state?.message}
+        onClose={handleClose}
+      />
       <div className="auth-switch">
         <Link to={'/account/login'} className={`btn selected`}>
           로그인

@@ -5,7 +5,7 @@ import { findPassword } from '../../api/auth';
 import { isValidateEmail } from '../../utils/validationUtils';
 
 const FindPwForm = () => {
-  const navaigate = useNavigate();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
@@ -27,7 +27,11 @@ const FindPwForm = () => {
     try {
       const response = await findPassword(email);
       if (response.status === 200) {
-        navaigate('/');
+        navigate('/account/login', {
+          state: {
+            message: `${email}(으)로 비밀번호 재설정 이메일을 보냈습니다.`,
+          },
+        });
       }
     } catch (e) {
       setError('이메일을 찾을 수 없습니다.');
