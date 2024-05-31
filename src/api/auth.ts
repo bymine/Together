@@ -93,7 +93,10 @@ export const changePassword = async (
   changePasswordData: ChangePasswordData,
 ) => {
   try {
-    const response = await axiosInstance.patch(`/password`, changePasswordData);
+    const response = await axiosInstance.patch(
+      'user/password',
+      changePasswordData,
+    );
     return response;
   } catch (error) {
     throw error;
